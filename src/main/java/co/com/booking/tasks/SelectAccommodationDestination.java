@@ -18,6 +18,10 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnab
 
 public class SelectAccommodationDestination {
 
+    private SelectAccommodationDestination() {
+        //Nothing
+    }
+
     public static Performable withCustomerData() {
         return Task.where("{0} enters-select search information",
                 WaitUntil.the(SEARCH_BOX_ACCOMMODATION_DESTINATION, isEnabled()).forNoMoreThan(5).seconds(),

@@ -10,6 +10,10 @@ import static co.com.booking.userinterface.stays.HomePage.SEARCH_FIELDS;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
 
 public class NavigateTo {
+    private NavigateTo() {
+        //Nothing
+    }
+
     public static Performable theStaysTab() {
         return Task.where("{0} opens the Booking app",
                 Click.on(BTN_CLOSE_WINDOW),
