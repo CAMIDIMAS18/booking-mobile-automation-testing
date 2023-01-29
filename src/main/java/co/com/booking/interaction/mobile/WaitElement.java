@@ -1,4 +1,4 @@
-package com.bancodebogota.interactions;
+package co.com.booking.interaction.mobile;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
@@ -6,9 +6,10 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -16,7 +17,7 @@ public class WaitElement implements Interaction {
 
 	private final Target target;
 	private final String state;
-	Logger log = Logger.getLogger(WaitElement.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(WaitElement.class.getSimpleName());
 
 	public WaitElement(Target target, String state) {
 		this.state = state;
@@ -38,7 +39,7 @@ public class WaitElement implements Interaction {
 			waitAs(actor).until(ExpectedConditions.elementToBeClickable(target.resolveFor(actor)));
 			break;
 		default:
-			log.info("No se encontro el case");
+			LOGGER.info("No se encontró el case");
 			break;
 		}
 	}
