@@ -5,6 +5,7 @@ build/
 !**/src/test/**/build/
 
 ###Test###
+target
 target/cucumber-reports.json
 target/failed_scenarios.txt
 
