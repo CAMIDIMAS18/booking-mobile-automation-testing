@@ -1,25 +1,26 @@
 package co.com.booking.interactions;
 
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
+import net.serenitybdd.markers.IsHidden;
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Interaction;
+import net.serenitybdd.screenplay.Tasks;
 
-public class Pause {
+public class Pause implements Interaction, IsHidden {
+    private final int seconds;
 
-    private Pause() {
+    public Pause(int seconds) {
+        this.seconds = seconds;
     }
 
-    public static void waitForSeconds(int seconds) {
+    public static Pause withDuration(int seconds) {
+        return Tasks.instrumented(Pause.class, seconds);
+    }
 
-        Logger logger = Logger.getLogger(Pause.class.getName());
-
+    @Override
+    public <T extends Actor> void performAs(T actor) {
         try {
             Thread.sleep(seconds * 1_000L);
-
         } catch (InterruptedException e) {
-            e.printStackTrace();
-            LogRecord logRecord = new LogRecord(Level.INFO, "Interrupted!" + e.getMessage());
-            logger.log(logRecord);
             Thread.currentThread().interrupt();
         }
     }
