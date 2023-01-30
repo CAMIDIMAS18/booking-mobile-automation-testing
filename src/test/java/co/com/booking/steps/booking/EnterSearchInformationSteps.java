@@ -2,6 +2,7 @@ package co.com.booking.steps.booking;
 
 import co.com.booking.questions.IsEnabled;
 import co.com.booking.tasks.booking.SelectAccommodationDestination;
+import co.com.booking.tasks.common.scroll.Scroll;
 import co.com.booking.utils.data.BookingData;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
@@ -26,6 +27,7 @@ public class EnterSearchInformationSteps {
 
     @Entonces("deberá visualizar la lista de resultados de alojamientos disponibles")
     public void selectDestinationOption() {
+        CAMILA.attemptsTo(Scroll.toElement());
         CAMILA.should(seeThat(IsEnabled.theTarget(RESULT_BOOKING), equalTo(true)));
     }
 }
